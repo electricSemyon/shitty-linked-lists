@@ -14,7 +14,11 @@ namespace LinkedLists
 
             text.ReadText("Assets/text.txt");
             text.TextList.Print();
-            
+
+            string firstEntryWithTwoSameLetters = TextProcessor.GetFirstWordWithTwoSameLetters(text);
+            Text newText = TextProcessor.DeleteStringEntries(text, "dolor");
+
+
             Console.ReadKey();
         }
     }

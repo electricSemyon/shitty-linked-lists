@@ -8,9 +8,32 @@ namespace LinkedLists
 {
     class TextProcessor
     {
-        static string GetFirstWordWithTwoSameLetters(CircularDoublyLinkedList<string> text)
+        public static string GetFirstWordWithTwoSameLetters(Text text)
         {
-            return "";
+            string result = null;
+
+            text.TextList.ForEach(node =>
+            {
+                if (node.data.ToList<char>().GroupBy(n => n).Any(c => c.Count() > 1))
+                    result = node.data;
+            });
+
+            return result;
+        }
+
+        public static Text DeleteStringEntries(Text text, string entry)
+        {
+            CircularDoublyLinkedList<string> oldTextList = text.TextList;
+            CircularDoublyLinkedList<string> newTextList = new CircularDoublyLinkedList<string>();
+
+            oldTextList.ForEach(node =>
+            {
+                if (node.data != entry) newTextList.Append(node.data);
+            });
+
+            text.TextList = newTextList;
+
+            return text;
         }
     }
 }
