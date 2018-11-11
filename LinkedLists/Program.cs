@@ -12,7 +12,7 @@ namespace LinkedLists
         {
             Text text = new Text();
 
-            text.ReadText("Assets/text.txt");
+            text.ReadText("../../Assets/text.txt");
             text.TextList.Print();
 
             TextProcessor processor = new TextProcessor(text);

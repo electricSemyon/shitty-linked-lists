@@ -21,13 +21,13 @@ namespace LinkedLists
         public void Append(LinkedNode<T> nodeToAppend)
         {
             nextNode = nodeToAppend;
-            nodeToAppend.previousNode = this;
         }
 
         public void AppendToEnd(LinkedNode<T> nodeToAppend, LinkedNode<T> first)
         {
             if (nextNode == first || nextNode == null) {
                 nodeToAppend.nextNode = first;
+                nodeToAppend.previousNode = this;
                 Append(nodeToAppend);
             }
             else nextNode.AppendToEnd(nodeToAppend, first);
