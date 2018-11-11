@@ -9,7 +9,8 @@ namespace LinkedLists
     class CircularDoublyLinkedList<T>
     {
         LinkedNode<T> head = null;
-        public delegate void ForEachCalback(LinkedNode<T> node);
+        public delegate void ForEachLambda(LinkedNode<T> node);
+        public delegate bool FilterLambda(LinkedNode<T> node);
 
         public void Append(T data)
         {
@@ -26,7 +27,7 @@ namespace LinkedLists
             }
         }
 
-        public void ForEach(ForEachCalback cb)
+        public void ForEach(ForEachLambda cb)
         {
             LinkedNode<T> temp = head;
 
@@ -35,6 +36,18 @@ namespace LinkedLists
                 cb(temp);
                 temp = temp.nextNode;
             } while (temp != head);
+        }
+
+        public CircularDoublyLinkedList<T> Filter(FilterLambda predicate)
+        {
+            CircularDoublyLinkedList<T> newList = new CircularDoublyLinkedList<T>();
+
+            ForEach(node =>
+            {
+                if (predicate(node)) newList.Append(node.data);
+            });
+
+            return newList;
         }
 
         override public string ToString()

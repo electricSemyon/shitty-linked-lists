@@ -15,9 +15,17 @@ namespace LinkedLists
             text.ReadText("Assets/text.txt");
             text.TextList.Print();
 
+            TextProcessor processor = new TextProcessor(text);
             string firstEntryWithTwoSameLetters = TextProcessor.GetFirstWordWithTwoSameLetters(text);
-            Text newText = TextProcessor.DeleteStringEntries(text, "dolor");
 
+            processor.DeleteStringEntries(firstEntryWithTwoSameLetters);
+            processor.OmitWordsWithLetterDuplicates("dolor");
+            processor.RemoveOrs();
+            processor.InsertOrs();
+            processor.ProcessWordsWithMoreThanFourCharacters();
+
+
+            processor.text.TextList.Print();
 
             Console.ReadKey();
         }
