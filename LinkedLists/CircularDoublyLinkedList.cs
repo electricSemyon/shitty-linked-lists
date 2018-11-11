@@ -9,6 +9,7 @@ namespace LinkedLists
     class CircularDoublyLinkedList<T>
     {
         LinkedNode<T> head = null;
+        public delegate void ForEachCalback(LinkedNode<T> node);
 
         public void Append(T data)
         {
@@ -25,23 +26,32 @@ namespace LinkedLists
             }
         }
 
-        override public string ToString()
+        public void ForEach(ForEachCalback cb)
         {
             LinkedNode<T> temp = head;
-            string result = "";
 
             do
             {
-                result += GetNodeString(temp);
+                cb(temp);
+                temp = temp.nextNode;
+            } while (temp != head);
+        }
 
-                if (temp.nextNode == head)
+        override public string ToString()
+        {
+            string result = "";
+
+            this.ForEach(node =>
+            {
+                result += GetNodeString(node);
+
+                if (node.nextNode == head)
                 {
                     result += GetNodeString(head, true);
                 }
 
-                temp = temp.nextNode;
-
-            } while (temp != head);
+                node = node.nextNode;
+            });
 
             return result;
         }
