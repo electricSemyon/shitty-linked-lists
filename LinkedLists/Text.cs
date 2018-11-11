@@ -9,14 +9,22 @@ namespace LinkedLists
 {
     class Text
     {
-        private CircularDoublyLinkedList<String> TextList;
+        public CircularDoublyLinkedList<String> TextList { get; set; }
 
         public void ReadText(string path)
         {
+            TextList = new CircularDoublyLinkedList<string>();
+
             try {
                 using (StreamReader sr = new StreamReader(path))
                 {
                     String line = sr.ReadToEnd();
+                    String[] words = SplitTextBySeparator(line);
+
+                    foreach(string word in words)
+                    {
+                        TextList.Append(word);
+                    }
                 }
             }
             catch (Exception e)
@@ -28,7 +36,7 @@ namespace LinkedLists
 
         public string[] SplitTextBySeparator(string plainText)
         {
-            return plainText.Split(new Char[] { ',', '\n', '.' });
+            return plainText.Split(new Char[] { ',', '\n', '.', ' ' });
         }
     }
 }

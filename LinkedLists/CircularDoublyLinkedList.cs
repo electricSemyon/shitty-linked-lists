@@ -20,6 +20,7 @@ namespace LinkedLists
             }
             else
             {
+                head.previousNode = newNode;
                 head.AppendToEnd(newNode, head);
             }
         }
@@ -31,14 +32,26 @@ namespace LinkedLists
 
             do
             {
-                result += temp.data.ToString() + " -> ";
+                result += GetNodeString(temp);
 
-                if (temp.nextNode == head) result += "head";
+                if (temp.nextNode == head)
+                {
+                    result += GetNodeString(head, true);
+                }
 
                 temp = temp.nextNode;
+
             } while (temp != head);
 
             return result;
+        }
+
+        private string GetNodeString(LinkedNode<T> node, bool isLast = false)
+        {
+            return $"[" +
+                   $"data: { node.data.ToString() } " +
+                   $"] { (isLast ? "" : "-> ") }" +
+                   $"";
         }
 
         public void Print()

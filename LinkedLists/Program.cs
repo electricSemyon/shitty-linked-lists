@@ -10,19 +10,11 @@ namespace LinkedLists
     {
         static void Main(string[] args)
         {
-            CircularDoublyLinkedList<int> text = new CircularDoublyLinkedList<int>();
-            text.Append(1);
-            text.Append(2);
-            text.Append(3);
-            text.Append(4);
-            text.Print();
+            Text text = new Text();
 
-            //Text text = new Text();
-
-            //text.ReadText("Assets/text.txt");
-
-
-
+            text.ReadText("Assets/text.txt");
+            text.TextList.Print();
+            
             Console.ReadKey();
         }
     }
