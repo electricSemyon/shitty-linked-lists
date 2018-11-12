@@ -11,6 +11,7 @@ namespace LinkedLists
         LinkedNode<T> head = null;
         public delegate void ForEachLambda(LinkedNode<T> node);
         public delegate bool FilterLambda(LinkedNode<T> node);
+        public delegate dynamic ReduceLambda(LinkedNode<T> node, dynamic acc);
 
         public void Append(T data)
         {
@@ -38,6 +39,15 @@ namespace LinkedLists
             } while (temp != head);
         }
 
+        public dynamic Reduce(ReduceLambda f, dynamic initialAcc)
+        {
+            var acc = initialAcc;
+
+            ForEach(node => acc = f(node, acc));
+
+            return acc;
+        }
+
         public CircularDoublyLinkedList<T> Filter(FilterLambda predicate)
         {
             CircularDoublyLinkedList<T> newList = new CircularDoublyLinkedList<T>();
@@ -50,31 +60,28 @@ namespace LinkedLists
             return newList;
         }
 
+        public int GetLength()
+        {
+            return Reduce((node, acc) => acc + 1, 0);
+        } 
+
         override public string ToString()
         {
             string result = "";
 
-            this.ForEach(node =>
+            ForEach(node =>
             {
-                result += GetNodeString(node);
+                result += $"{ node.data } -> ";
 
                 if (node.nextNode == head)
                 {
-                    result += GetNodeString(head, true);
+                    result += node.data;
                 }
 
                 node = node.nextNode;
             });
 
             return result;
-        }
-
-        private string GetNodeString(LinkedNode<T> node, bool isLast = false)
-        {
-            return $"[" +
-                   $"data: { node.data.ToString() } " +
-                   $"] { (isLast ? "" : "-> ") }" +
-                   $"";
         }
 
         public void Print()

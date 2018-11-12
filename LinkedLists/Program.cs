@@ -18,6 +18,8 @@ namespace LinkedLists
             TextProcessor processor = new TextProcessor(text);
             string firstEntryWithTwoSameLetters = TextProcessor.GetFirstWordWithTwoSameLetters(text);
 
+            Console.WriteLine(processor.text.TextList.GetLength());
+
             processor.DeleteStringEntries(firstEntryWithTwoSameLetters);
             processor.OmitWordsWithLetterDuplicates("dolor");
             processor.RemoveOrs();
@@ -27,6 +29,7 @@ namespace LinkedLists
 
 
             processor.text.TextList.Print();
+
 
             Console.ReadKey();
         }
