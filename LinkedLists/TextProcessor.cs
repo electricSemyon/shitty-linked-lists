@@ -43,11 +43,6 @@ namespace LinkedLists
             text.TextList.Filter(node => !HasWordSameTwoLetters(node.data));
         }
 
-        public void SwapPairs(string entry)
-        {
-            text.TextList.Filter(node => HasWordSameTwoLetters(node.data));
-        }
-
         public void RemoveOrs()
         {
             text.TextList.Filter(node => node.data != "or");

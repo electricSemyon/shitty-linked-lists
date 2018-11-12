@@ -22,6 +22,7 @@ namespace LinkedLists
             processor.OmitWordsWithLetterDuplicates("dolor");
             processor.RemoveOrs();
             processor.InsertOrs();
+            processor.RemoveWordsWithLessThanFourCharacters();
             processor.ProcessWordsWithMoreThanFourCharacters();
 
 
