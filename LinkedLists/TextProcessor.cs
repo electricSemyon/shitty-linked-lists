@@ -33,22 +33,28 @@ namespace LinkedLists
             return word.ToList<char>().GroupBy(n => n).Any(c => c.Count() > 1);
         }
 
-        public void DeleteStringEntries(string entry)
+        public TextProcessor DeleteStringEntries(string entry)
         {
             text.TextList.Filter(node => node.data != entry);
+
+            return this;
         }
 
-        public void OmitWordsWithLetterDuplicates(string entry)
+        public TextProcessor OmitWordsWithLetterDuplicates(string entry)
         {
             text.TextList.Filter(node => !HasWordSameTwoLetters(node.data));
+
+            return this;
         }
 
-        public void RemoveOrs()
+        public TextProcessor RemoveOrs()
         {
             text.TextList.Filter(node => node.data != "or");
+
+            return this;
         }
 
-        public void InsertOrs()
+        public TextProcessor InsertOrs()
         {
             CircularDoublyLinkedList<string> newTextList = new CircularDoublyLinkedList<string>();
 
@@ -58,14 +64,18 @@ namespace LinkedLists
             });
 
             text.TextList = newTextList;
+
+            return this;
         }
 
-        public void RemoveWordsWithLessThanFourCharacters()
+        public TextProcessor RemoveWordsWithLessThanFourCharacters()
         {
             text.TextList = text.TextList.Filter(node => node.data.Length >= 4);
+
+            return this;
         }
 
-        public void ProcessWordsWithMoreThanFourCharacters()
+        public TextProcessor ProcessWordsWithMoreThanNCharacters(int n)
         {
             CircularDoublyLinkedList<string> newTextList = new CircularDoublyLinkedList<string>();
 
@@ -73,9 +83,9 @@ namespace LinkedLists
                 string value = node.data;
                 int length = value.Length;
 
-                if (length > 4)
+                if (length > n)
                 {
-                    newTextList.Append(value.Substring(0, length - 4) + value[length - 1]);
+                    newTextList.Append(value.Substring(0, length - n) + value[length - 1]);
                 }
                 else
                 {
@@ -84,6 +94,8 @@ namespace LinkedLists
             });
 
             text.TextList = newTextList;
+
+            return this;
         }
     }
 }

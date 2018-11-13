@@ -20,12 +20,12 @@ namespace LinkedLists
 
             Console.WriteLine(processor.text.TextList.GetLength());
 
-            processor.DeleteStringEntries(firstEntryWithTwoSameLetters);
-            processor.OmitWordsWithLetterDuplicates("dolor");
-            processor.RemoveOrs();
-            processor.InsertOrs();
-            processor.RemoveWordsWithLessThanFourCharacters();
-            processor.ProcessWordsWithMoreThanFourCharacters();
+            processor.DeleteStringEntries(firstEntryWithTwoSameLetters)
+                .OmitWordsWithLetterDuplicates("dolor")
+                .RemoveOrs()
+                .InsertOrs()
+                .RemoveWordsWithLessThanFourCharacters()
+                .ProcessWordsWithMoreThanNCharacters(4);
 
 
             processor.text.TextList.Print();
