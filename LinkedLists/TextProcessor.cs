@@ -28,7 +28,7 @@ namespace LinkedLists
             return result;
         }
 
-        public static bool HasWordSameTwoLetters(string word)
+        private static bool HasWordSameTwoLetters(string word)
         {
             return word.ToList<char>().GroupBy(n => n).Any(c => c.Count() > 1);
         }
