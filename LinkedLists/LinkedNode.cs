@@ -23,16 +23,6 @@ namespace LinkedLists
             nextNode = nodeToAppend;
         }
 
-        public void AppendToEnd(LinkedNode<T> nodeToAppend, LinkedNode<T> first)
-        {
-            if (nextNode == first || nextNode == null) {
-                nodeToAppend.nextNode = first;
-                nodeToAppend.previousNode = this;
-                Append(nodeToAppend);
-            }
-            else nextNode.AppendToEnd(nodeToAppend, first);
-        }
-
         public override string ToString()
         {
             return data.ToString();

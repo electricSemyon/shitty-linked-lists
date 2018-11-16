@@ -15,29 +15,9 @@ namespace LinkedLists
             this.text = text;
         }
 
-        public static string GetFirstWordWithTwoSameLetters(Text text)
-        {
-            string result = null;
-
-            text.TextList.ForEach(node =>
-            {
-                if (HasWordSameTwoLetters(node.data))
-                    result = node.data;
-            });
-
-            return result;
-        }
-
         private static bool HasWordSameTwoLetters(string word)
         {
             return word.ToList<char>().GroupBy(n => n).Any(c => c.Count() > 1);
-        }
-
-        public TextProcessor DeleteStringEntries(string entry)
-        {
-            text.TextList.Filter(node => node.data != entry);
-
-            return this;
         }
 
         public TextProcessor OmitWordsWithLetterDuplicates(string entry)

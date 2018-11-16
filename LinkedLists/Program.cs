@@ -16,11 +16,10 @@ namespace LinkedLists
             text.TextList.Print();
 
             TextProcessor processor = new TextProcessor(text);
-            string firstEntryWithTwoSameLetters = TextProcessor.GetFirstWordWithTwoSameLetters(text);
 
             Console.WriteLine(processor.text.TextList.GetLength());
 
-            processor.DeleteStringEntries(firstEntryWithTwoSameLetters)
+            processor
                 .OmitWordsWithLetterDuplicates("dolor")
                 .RemoveOrs()
                 .InsertOrs()

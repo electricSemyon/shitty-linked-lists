@@ -15,16 +15,20 @@ namespace LinkedLists
 
         public void Append(T data)
         {
-            LinkedNode<T> newNode = new LinkedNode<T>(data);
+            LinkedNode<T> node = new LinkedNode<T>(data);
 
             if (head == null)
             {
-                head = newNode;
+                head = node;
+                head.nextNode = node;
+                head.previousNode = node;
             }
             else
             {
-                head.previousNode = newNode;
-                head.AppendToEnd(newNode, head);
+                node.previousNode = head.previousNode;
+                node.nextNode = head;
+                head.previousNode.nextNode = node;
+                head.previousNode = node;
             }
         }
 
@@ -75,7 +79,7 @@ namespace LinkedLists
 
                 if (node.nextNode == head)
                 {
-                    result += node.data;
+                    result += $"{ head.data } (head element)";
                 }
 
                 node = node.nextNode;
