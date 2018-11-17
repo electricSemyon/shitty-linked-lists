@@ -8,11 +8,11 @@ namespace LinkedLists
 {
     class TextProcessor
     {
-        public Text text { get; }
+        public Text Text { get; }
 
         public TextProcessor(Text text)
         {
-            this.text = text;
+            this.Text = text;
         }
 
         private static bool HasWordSameTwoLetters(string word)
@@ -22,14 +22,14 @@ namespace LinkedLists
 
         public TextProcessor OmitWordsWithLetterDuplicates()
         {
-            text.TextList.Filter(node => !HasWordSameTwoLetters(node.data));
+            Text.TextList.Filter(node => !HasWordSameTwoLetters(node.data));
 
             return this;
         }
 
         public TextProcessor RemoveOrs()
         {
-            text.TextList.Filter(node => node.data != "or");
+            Text.TextList.Filter(node => node.data != "or");
 
             return this;
         }
@@ -38,19 +38,19 @@ namespace LinkedLists
         {
             CircularDoublyLinkedList<string> newTextList = new CircularDoublyLinkedList<string>();
 
-            text.TextList.ForEach(node => {
+            Text.TextList.ForEach(node => {
                 newTextList.Append(node.data);
                 newTextList.Append("or");
             });
 
-            text.TextList = newTextList;
+            Text.TextList = newTextList;
 
             return this;
         }
 
         public TextProcessor RemoveWordsWithLessThanNCharacters(int n)
         {
-            text.TextList = text.TextList.Filter(node => node.data.Length >= n);
+            Text.TextList = Text.TextList.Filter(node => node.data.Length >= n);
 
             return this;
         }
@@ -59,7 +59,7 @@ namespace LinkedLists
         {
             CircularDoublyLinkedList<string> newTextList = new CircularDoublyLinkedList<string>();
 
-            text.TextList.ForEach(node => {
+            Text.TextList.ForEach(node => {
                 string value = node.data;
                 int length = value.Length;
 
@@ -73,7 +73,7 @@ namespace LinkedLists
                 }
             });
 
-            text.TextList = newTextList;
+            Text.TextList = newTextList;
 
             return this;
         }

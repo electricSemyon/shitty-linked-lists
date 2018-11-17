@@ -17,7 +17,7 @@ namespace LinkedLists
 
             TextProcessor processor = new TextProcessor(text);
 
-            Console.WriteLine(processor.text.TextList.GetLength());
+            Console.WriteLine(processor.Text.TextList.GetLength());
 
             processor
                 .OmitWordsWithLetterDuplicates()
@@ -27,7 +27,7 @@ namespace LinkedLists
                 .ProcessWordsWithMoreThanNCharacters(4);
 
 
-            processor.text.TextList.Print();
+            processor.Text.TextList.Print();
 
 
             Console.ReadKey();
