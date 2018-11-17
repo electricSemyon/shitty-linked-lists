@@ -20,7 +20,7 @@ namespace LinkedLists
             return word.ToList<char>().GroupBy(n => n).Any(c => c.Count() > 1);
         }
 
-        public TextProcessor OmitWordsWithLetterDuplicates(string entry)
+        public TextProcessor OmitWordsWithLetterDuplicates()
         {
             text.TextList.Filter(node => !HasWordSameTwoLetters(node.data));
 
@@ -48,9 +48,9 @@ namespace LinkedLists
             return this;
         }
 
-        public TextProcessor RemoveWordsWithLessThanFourCharacters()
+        public TextProcessor RemoveWordsWithLessThanNCharacters(int n)
         {
-            text.TextList = text.TextList.Filter(node => node.data.Length >= 4);
+            text.TextList = text.TextList.Filter(node => node.data.Length >= n);
 
             return this;
         }

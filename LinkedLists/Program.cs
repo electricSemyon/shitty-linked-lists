@@ -20,10 +20,10 @@ namespace LinkedLists
             Console.WriteLine(processor.text.TextList.GetLength());
 
             processor
-                .OmitWordsWithLetterDuplicates("dolor")
+                .OmitWordsWithLetterDuplicates()
                 .RemoveOrs()
                 .InsertOrs()
-                .RemoveWordsWithLessThanFourCharacters()
+                .RemoveWordsWithLessThanNCharacters(4)
                 .ProcessWordsWithMoreThanNCharacters(4);
 
 
