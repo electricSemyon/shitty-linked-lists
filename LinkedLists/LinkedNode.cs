@@ -18,11 +18,6 @@ namespace LinkedLists
             this.data = data;
         }
 
-        public void Append(LinkedNode<T> nodeToAppend)
-        {
-            nextNode = nodeToAppend;
-        }
-
         public override string ToString()
         {
             return data.ToString();
