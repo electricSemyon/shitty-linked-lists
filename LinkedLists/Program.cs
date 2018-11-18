@@ -26,10 +26,9 @@ namespace LinkedLists
                 .RemoveWordsWithLessThanNCharacters(4)
                 .ProcessWordsWithMoreThanNCharacters(4);
 
-
-            processor.Text.TextList.Print();
-
-
+            foreach (String word in processor.Text.TextList)
+                Console.WriteLine(word);
+            
             Console.ReadKey();
         }
     }

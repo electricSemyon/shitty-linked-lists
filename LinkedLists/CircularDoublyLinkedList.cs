@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,28 @@ using System.Threading.Tasks;
 
 namespace LinkedLists
 {
-    class CircularDoublyLinkedList<T>
+    class CircularDoublyLinkedList<T> : IEnumerable<T>
     {
         LinkedNode<T> head = null;
         public delegate void ForEachLambda(LinkedNode<T> node);
         public delegate bool FilterLambda(LinkedNode<T> node);
         public delegate dynamic ReduceLambda(LinkedNode<T> node, dynamic acc);
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            LinkedNode<T> temp = head;
+
+            do
+            {
+                yield return temp.data;
+                temp = temp.nextNode;
+            } while (temp != head);
+        }
 
         public void Append(T data)
         {
