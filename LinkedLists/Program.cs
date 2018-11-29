@@ -11,13 +11,13 @@ namespace LinkedLists
         static void Main(string[] args)
         {
             Text text = new Text();
-
             text.ReadText("../../Assets/text.txt");
-            text.TextList.Print();
+
+            text.Print();
+
+            Console.WriteLine("---");
 
             TextProcessor processor = new TextProcessor(text);
-
-            Console.WriteLine(processor.Text.TextList.GetLength());
 
             processor
                 .OmitWordsWithLetterDuplicates()
@@ -26,9 +26,8 @@ namespace LinkedLists
                 .RemoveWordsWithLessThanNCharacters(4)
                 .ProcessWordsWithMoreThanNCharacters(4);
 
-            foreach (String word in processor.Text.TextList)
-                Console.WriteLine(word);
-            
+            processor.Text.Print();
+
             Console.ReadKey();
         }
     }

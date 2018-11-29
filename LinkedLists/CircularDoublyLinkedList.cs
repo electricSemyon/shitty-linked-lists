@@ -30,6 +30,38 @@ namespace LinkedLists
             } while (temp != head);
         }
 
+        public T this[int index]
+        {
+            get
+            {
+                LinkedNode<T> temp = head;
+
+                for (int i = 0; i < index; i++)
+                {
+                    if (head.nextNode == null)
+                        throw new Exception("Out of bounds");
+
+                    temp = temp.nextNode;
+                }
+
+                return temp.data;
+            }
+            set
+            {
+                LinkedNode<T> temp = head;
+
+                for (int i = 0; i < index; i++)
+                {
+                    if (head.nextNode == null)
+                        throw new Exception("Out of bounds");
+
+                    temp = temp.nextNode;
+                }
+
+                temp.data = value;
+            }
+        }
+
         public void Append(T data)
         {
             LinkedNode<T> node = new LinkedNode<T>(data);
@@ -81,11 +113,6 @@ namespace LinkedLists
             return newList;
         }
 
-        public int GetLength()
-        {
-            return Reduce((node, acc) => acc + 1, 0);
-        } 
-
         override public string ToString()
         {
             string result = "";
@@ -103,11 +130,6 @@ namespace LinkedLists
             });
 
             return result;
-        }
-
-        public void Print()
-        {
-            Console.WriteLine(this.ToString());
         }
     }
 }

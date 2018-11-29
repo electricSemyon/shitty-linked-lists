@@ -36,7 +36,28 @@ namespace LinkedLists
 
         public string[] SplitTextBySeparator(string plainText)
         {
-            return plainText.Split(new Char[] { ',', '\n', '.', ' ' });
+            Char[] separators = new Char[] { '\n', '.', ' ' };
+
+            return plainText
+                .Split(separators)
+                .Where(element =>  element.Length > 0)
+                .Select(element => element.Trim())
+                .ToArray();
+        }
+
+        public void Print()
+        {
+            int WORDS_PER_LINE = 4;
+
+            for(int i = 0; i < TextList.Count(); i++)
+            {
+                Console.Write(TextList[i] + " ");
+
+                if (i % WORDS_PER_LINE == 0 && i != 0)
+                    Console.WriteLine();
+            }
+
+            Console.WriteLine();
         }
     }
 }
